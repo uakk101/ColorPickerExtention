@@ -1,6 +1,7 @@
 const button = document.querySelector('.pickerbtn');
 const colorGrid = document.querySelector('.colorGrid');
 const colorValue = document.querySelector('.colorValue');
+const copied = document.querySelector('.copied');
 
 button.addEventListener('click', async() => {
     
@@ -22,7 +23,8 @@ chrome.scripting.executeScript({
         const color = data.result.sRGBHex;
         colorGrid.style.backgroundColor = color;
         colorValue.innerText = color;
-        alert("copied to clipboard")
+        copied.innerText = "copied to clipboard";
+        //alert("copied to clipboard")
         try{
 
             await navigator.clipboard.writeText(color);

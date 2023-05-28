@@ -3,6 +3,15 @@ body{
 }
 
 
+.copied{
+
+
+  margin-left: 10px;
+  font-style: italic;
+  color: gray;
+  font-weight: 400;
+}
+
 .colorGrid{
 
   display: inline-block;
