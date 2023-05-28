@@ -12,7 +12,20 @@ chrome.scripting.executeScript({
 
 });
 
-function pickColor() {
-    let color = document.body.style.backgroundColor;
-    alert(color);
+async function pickColor() {
+
+    try {  
+
+        const eyeDropper = new EyeDropper();
+        const color = await eyeDropper.open();
+        console.log(color);
+
+     }
+    catch(err) { 
+        console.log(err);
+    }
+
+
+
+
 }
