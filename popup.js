@@ -1,4 +1,6 @@
 const button = document.querySelector('.pickerbtn');
+const colorGrid = document.querySelector('.colorGrid');
+const colorValue = document.querySelector('.colorValue');
 
 button.addEventListener('click', async() => {
     
@@ -8,6 +10,14 @@ chrome.scripting.executeScript({
     target: { tabId: tab.id },  
     function: pickColor,
 
+}, async (injectionResults) => {
+    console.log(injectionResults);
+    const [data] = injectionResults;
+    if (data.result) { 
+        const color = data.result.sRGBHex;
+        colorGrid.style.backgroundColor = color;
+        colorValue.innerText = color;
+    }
 });
 
 });
@@ -17,8 +27,8 @@ async function pickColor() {
     try {  
 
         const eyeDropper = new EyeDropper();
-        const color = await eyeDropper.open();
-        console.log(color);
+        return await eyeDropper.open();
+    
 
      }
     catch(err) { 

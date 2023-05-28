@@ -2,6 +2,27 @@ body{
     background:#F5F5FA;
 }
 
+
+.colorGrid{
+
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;  
+
+}
+
+.colorValue{
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.SelectedColor{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .wrapper{
 
     width: 300px;
@@ -74,7 +95,7 @@ body{
   top: 0;
   border-radius: 10px;
 }
-          
+
   
 
 
