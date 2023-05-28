@@ -6,17 +6,35 @@ button.addEventListener('click', async() => {
     
 let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
 
+
+   
+
+
 chrome.scripting.executeScript({ 
     target: { tabId: tab.id },  
     function: pickColor,
 
 }, async (injectionResults) => {
-    console.log(injectionResults);
+    // console.log(injectionResults);
     const [data] = injectionResults;
+   
     if (data.result) { 
         const color = data.result.sRGBHex;
         colorGrid.style.backgroundColor = color;
         colorValue.innerText = color;
+        alert("copied to clipboard")
+        try{
+
+            await navigator.clipboard.writeText(color);
+            
+
+        }catch(err){
+            console.e(err);
+        }
+
+       
+        
+       
     }
 });
 
@@ -27,14 +45,13 @@ async function pickColor() {
     try {  
 
         const eyeDropper = new EyeDropper();
-        return await eyeDropper.open();
+        return await  eyeDropper.open();
     
 
      }
     catch(err) { 
         console.log(err);
     }
-
 
 
 
